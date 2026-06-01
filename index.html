@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Light Calvary Scripts</title>
-    <!-- Google Fonts لجعل الخط عصري -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Modern Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
-        /* المتغيرات والألوان الرئيسية */
+        /* CSS Variables & Color Palette */
         :root {
             --bg-main: #0a0a0a;
             --bg-card: #141414;
@@ -15,13 +15,14 @@
             --text-white: #ffffff;
             --text-gray: #aaaaaa;
             --glow-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
+            --discord-color: #5865F2;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
@@ -30,17 +31,73 @@
             padding-bottom: 50px;
         }
 
-        /* الهيدر / رأس الموقع */
+        /* Navigation Bar (Menu) */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #0d0d0d;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            text-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-yellow);
+        }
+
+        /* Discord Button Styling */
+        .discord-btn {
+            background-color: var(--discord-color);
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s !important;
+        }
+
+        .discord-btn:hover {
+            background-color: #4752c4;
+            transform: scale(1.05);
+        }
+
+        /* Header / Hero Section */
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             border-bottom: 2px solid var(--primary-yellow);
             box-shadow: var(--glow-shadow);
             background: linear-gradient(to bottom, #111, var(--bg-main));
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 900;
             color: var(--primary-yellow);
             text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
@@ -52,7 +109,7 @@
             font-size: 1.1rem;
         }
 
-        /* حاوية السكربتات */
+        /* Scripts Container */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -62,7 +119,7 @@
             gap: 30px;
         }
 
-        /* كارت السكربت الواحد */
+        /* Script Card Layout */
         .script-card {
             background-color: var(--bg-card);
             border: 1px solid #222;
@@ -78,7 +135,7 @@
             box-shadow: var(--glow-shadow);
         }
 
-        /* صورة الماب */
+        /* Script Thumbnail */
         .script-thumb {
             width: 100%;
             height: 180px;
@@ -86,13 +143,13 @@
             border-bottom: 2px solid #222;
         }
 
-        /* محتوى الكارت */
+        /* Card Content */
         .script-info {
             padding: 20px;
         }
 
         .map-name {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--primary-yellow);
             font-weight: 700;
             margin-bottom: 12px;
@@ -101,15 +158,15 @@
             gap: 8px;
         }
 
-        /* صندوق السكربت (أكواد البرمجة) */
+        /* Script Code Area */
         .code-box {
             background-color: #050505;
             border: 1px solid #333;
             border-radius: 6px;
             padding: 12px;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            color: #00ff66; /* لون السكربت أخضر ماتركس ليعطي مظهر احترافي */
+            font-size: 0.85rem;
+            color: #00ff66; /* Neon green code text */
             direction: ltr;
             text-align: left;
             white-space: nowrap;
@@ -117,7 +174,7 @@
             margin-bottom: 15px;
         }
 
-        /* زر النسخ */
+        /* Copy Button */
         .copy-btn {
             width: 100%;
             background-color: var(--primary-yellow);
@@ -129,10 +186,6 @@
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
         }
 
         .copy-btn:hover {
@@ -144,80 +197,106 @@
             transform: scale(0.98);
         }
 
-        /* رسالة تظهر عند النسخ بنجاح */
+        /* Success State for Copy Button */
         .copied {
             background-color: #00ff66 !important;
             color: #000 !important;
+        }
+
+        /* Responsive Design adjust */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- رأس الموقع -->
+    <!-- Navigation Menu Bar -->
+    <nav>
+        <a href="#" class="logo">Light Calvary</a>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Scripts</a>
+            <!-- Discord Menu Link -->
+            <a href="https://discord.gg/7XMKXCH4nK" target="_blank" class="discord-btn">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle;">
+                    <path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.214 12.214 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032a.054.054 0 0 0 .022.037a13.27 13.27 0 0 0 3.984 2.016.05.05 0 0 0 .054-.018c.308-.42.585-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.005-.083a6.07 6.07 0 0 0 .248-.195.051.051 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.09.066.174.132.248.195a.051.051 0 0 1-.004.083 9.14 9.14 0 0 1-1.249.594.05.05 0 0 0-.01.03.052.052 0 0 0 .018.016 13.264 13.264 0 0 0 3.984-2.016.053.053 0 0 0 .023-.037c.376-3.461-.63-6.474-2.614-9.107a.038.038 0 0 0-.021-.018zM5.12 10.012c-.793 0-1.44-.73-1.44-1.624 0-.894.634-1.624 1.44-1.624.807 0 1.44.731 1.44 1.624 0 .894-.633 1.624-1.44 1.624zm4.035 0c-.794 0-1.44-.73-1.44-1.624 0-.894.634-1.624 1.44-1.624.807 0 1.44.731 1.44 1.624 0 .894-.633 1.624-1.44 1.624z"/>
+                </svg>
+                Join Discord
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Header -->
     <header>
         <h1>Light Calvary Scripts</h1>
-        <p>أفضل وأحدث سكربتات روبلوكس للمابات المفضلة لديك</p>
+        <p>The ultimate repository for the best and latest Roblox execution scripts.</p>
     </header>
 
-    <!-- منطقة عرض السكربتات -->
+    <!-- Scripts Display Grid -->
     <main class="container">
 
-        <!-- السكربت الأول (مثال: Blox Fruits) -->
+        <!-- Script Card: Example 1 -->
         <div class="script-card">
             <img src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?w=500" alt="Blox Fruits" class="script-thumb">
             <div class="script-info">
-                <div class="map-name">🎮 ماب: Blox Fruits (Auto Farm)</div>
+                <div class="map-name">🎮 Game: Blox Fruits (Auto Farm)</div>
                 <div class="code-box">loadstring(game:HttpGet("https://raw.githubusercontent.com/Example/BloxFruits/main/script.lua"))()</div>
-                <button class="copy-btn" onclick="copyScript(this)">نسخ السكربت</button>
+                <button class="copy-btn" onclick="copyScript(this)">Copy Script</button>
             </div>
         </div>
 
-        <!-- السكربت الثاني (مثال: Brookhaven) -->
+        <!-- Script Card: Example 2 -->
         <div class="script-card">
             <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500" alt="Brookhaven" class="script-thumb">
             <div class="script-info">
-                <div class="map-name">🎮 ماب: Brookhaven (Admin Panel)</div>
+                <div class="map-name">🎮 Game: Brookhaven (Admin Panel)</div>
                 <div class="code-box">loadstring(game:HttpGet("https://raw.githubusercontent.com/Example/Brookhaven/main/script.lua"))()</div>
-                <button class="copy-btn" onclick="copyScript(this)">نسخ السكربت</button>
+                <button class="copy-btn" onclick="copyScript(this)">Copy Script</button>
             </div>
         </div>
 
-        <!-- السكربت الثالث (مثال: BedWars) -->
+        <!-- Script Card: Example 3 -->
         <div class="script-card">
             <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=500" alt="BedWars" class="script-thumb">
             <div class="script-info">
-                <div class="map-name">🎮 ماب: BedWars (Kill Aura)</div>
+                <div class="map-name">🎮 Game: BedWars (Kill Aura)</div>
                 <div class="code-box">loadstring(game:HttpGet("https://raw.githubusercontent.com/Example/Bedwars/main/script.lua"))()</div>
-                <button class="copy-btn" onclick="copyScript(this)">نسخ السكربت</button>
+                <button class="copy-btn" onclick="copyScript(this)">Copy Script</button>
             </div>
         </div>
 
     </main>
 
-    <!-- السكربت المسؤول عن النسخ التلقائي -->
+    <!-- JavaScript Functional Logic -->
     <script>
         function copyScript(button) {
-            // الوصول إلى صندوق الكود الذي يسبق الزر مباشرة
+            // Locates the corresponding code-box element right above the clicked button
             const codeBox = button.previousElementSibling;
             const textToCopy = codeBox.innerText;
 
-            // استخدام الـ Clipboard API للنسخ
+            // Clipboard API implementation
             navigator.clipboard.writeText(textToCopy).then(() => {
-                // تغيير شكل الزر مؤقتاً لتأكيد النسخ
+                // Visual confirmation changes
                 const originalText = button.innerText;
-                button.innerText = "✓ تم النسخ بنجاح!";
+                button.innerText = "✓ Copied successfully!";
                 button.classList.add("copied");
 
-                // إعادة الزر لحالته الطبيعية بعد ثانيتين
+                // Restores the button appearance after 2 seconds
                 setTimeout(() => {
                     button.innerText = originalText;
                     button.classList.remove("copied");
                 }, 2000);
             }).catch(err => {
-                console.error("فشل النسخ: ", err);
-                alert("حدث خطأ أثناء النسخ، يرجى نسخه يدوياً.");
+                console.error("Copy operation failed: ", err);
+                alert("Something went wrong. Please select and copy manually.");
             });
         }
     </script>
 </body>
 </html>
+
