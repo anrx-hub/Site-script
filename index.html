@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Light Calvary Scripts</title>
+    <!-- Modern Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
         /* CSS Variables & Color Palette */
@@ -35,7 +36,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
+            padding: 10px 40px;
             background-color: #0d0d0d;
             border-bottom: 1px solid #222;
             position: sticky;
@@ -43,12 +44,16 @@
             z-index: 100;
         }
 
-        nav .logo {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--primary-yellow);
-            text-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
-            text-decoration: none;
+        /* تعديل مقاس اللوغو في القائمة العلوية */
+        nav .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .logo-img {
+            height: 50px; /* حجم مناسب للشريط العلوي */
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links {
@@ -89,12 +94,20 @@
         /* Header / Hero Section */
         header {
             text-align: center;
-            padding: 50px 20px 30px 20px;
+            padding: 40px 20px 20px 20px;
             background: linear-gradient(to bottom, #111, var(--bg-main));
         }
 
+        /* اللوغو الكبير في الهيدر */
+        .main-logo {
+            max-width: 220px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.4));
+        }
+
         header h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 900;
             color: var(--primary-yellow);
             text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
@@ -106,10 +119,22 @@
             font-size: 1.1rem;
         }
 
+        /* حاويات الإعلانات لضمان التنسيق المستجيب */
+        .ad-container {
+            width: 100%;
+            max-width: 728px;
+            margin: 20px auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
         /* Search Bar Section */
         .search-container {
             max-width: 500px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 30px auto;
             padding: 0 20px;
             text-align: center;
         }
@@ -249,11 +274,16 @@
 </head>
 <body>
 
+    <!-- Navigation Menu Bar -->
     <nav>
-        <a href="#" class="logo">Light Calvary</a>
+        <a href="#" class="logo-container">
+            <!-- هنا تم إضافة اللوغو logo.PNG في الهيدر العلوي -->
+            <img src="logo.PNG" alt="Light Calvary Logo" class="logo-img">
+        </a>
         <div class="nav-links">
             <a href="#">Home</a>
             <a href="#">Scripts</a>
+            <!-- Discord Menu Link -->
             <a href="https://discord.gg/7XMKXCH4nK" target="_blank" class="discord-btn">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle;">
                     <path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.214 12.214 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032a.054.054 0 0 0 .022.037a13.27 13.27 0 0 0 3.984 2.016.05.05 0 0 0 .054-.018c.308-.42.585-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.005-.083a6.07 6.07 0 0 0 .248-.195.051.051 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.09.066.174.132.248.195a.051.051 0 0 1-.004.083 9.14 9.14 0 0 1-1.249.594.05.05 0 0 0-.01.03.052.052 0 0 0 .018.016 13.264 13.264 0 0 0 3.984-2.016.053.053 0 0 0 .023-.037c.376-3.461-.63-6.474-2.614-9.107a.038.038 0 0 0-.021-.018zM5.12 10.012c-.793 0-1.44-.73-1.44-1.624 0-.894.634-1.624 1.44-1.624.807 0 1.44.731 1.44 1.624 0 .894-.633 1.624-1.44 1.624zm4.035 0c-.794 0-1.44-.73-1.44-1.624 0-.894.634-1.624 1.44-1.624.807 0 1.44.731 1.44 1.624 0 .894-.633 1.624-1.44 1.624z"/>
@@ -263,19 +293,31 @@
         </div>
     </nav>
 
+    <!-- Main Header -->
     <header>
+        <!-- هنا تم إضافة اللوغو الكبير logo.PNG فوق اسم الموقع -->
+        <img src="logo.PNG" alt="Light Calvary Banner Logo" class="main-logo">
         <h1>Light Calvary Scripts</h1>
         <p>The ultimate repository for the best and latest Roblox execution scripts.</p>
     </header>
 
+    <!-- Search Bar Section -->
     <div class="search-container">
         <input type="text" id="searchBar" class="search-box" placeholder="Search for a game script..." onkeyup="filterScripts()">
     </div>
 
+    <!-- مكان الإعلان الأول (علوي) من Adsterra -->
+    <div class="ad-container">
+        <script src="https://pl29586659.effectivecpmnetwork.com/66/8b/cb/668bcb4bb64a3fe6f4d61ba82b713040.js"></script>
+    </div>
+
+    <!-- Scripts Display Grid -->
     <main class="container" id="scriptsGrid">
 
+        <!-- Message shown when no scripts match search -->
         <div id="noResults" class="no-results">No scripts found for this game.</div>
 
+        <!-- Script Card: Example 1 -->
         <div class="script-card">
             <img src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?w=500" alt="Blox Fruits" class="script-thumb">
             <div class="script-info">
@@ -285,6 +327,7 @@
             </div>
         </div>
 
+        <!-- Script Card: Example 2 -->
         <div class="script-card">
             <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500" alt="Brookhaven" class="script-thumb">
             <div class="script-info">
@@ -294,6 +337,7 @@
             </div>
         </div>
 
+        <!-- Script Card: Example 3 -->
         <div class="script-card">
             <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=500" alt="BedWars" class="script-thumb">
             <div class="script-info">
@@ -305,6 +349,12 @@
 
     </main>
 
+    <!-- مكان الإعلان الثاني (سفلي) من Adsterra قبل نهاية الصفحة -->
+    <div class="ad-container" style="margin-top: 40px;">
+        <script src="https://pl29586659.effectivecpmnetwork.com/66/8b/cb/668bcb4bb64a3fe6f4d61ba82b713040.js"></script>
+    </div>
+
+    <!-- JavaScript Functions -->
     <script>
         // 1. Live Search Filter Function
         function filterScripts() {
@@ -314,20 +364,17 @@
             let hasVisibleCards = false;
 
             for (let i = 0; i < cards.length; i++) {
-                // Get the map name text within the card
                 const mapNameElement = cards[i].getElementsByClassName('map-name')[0];
                 const mapText = mapNameElement.textContent || mapNameElement.innerText;
 
-                // Check if the search text exists in the map name
                 if (mapText.toLowerCase().includes(searchInput)) {
-                    cards[i].style.display = ""; // Show card
+                    cards[i].style.display = "";
                     hasVisibleCards = true;
                 } else {
-                    cards[i].style.display = "none"; // Hide card
+                    cards[i].style.display = "none";
                 }
             }
 
-            // Toggle "No results" message based on card visibility
             if (hasVisibleCards) {
                 noResults.style.display = "none";
             } else {
@@ -357,3 +404,4 @@
     </script>
 </body>
 </html>
+
